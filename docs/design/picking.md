@@ -2,8 +2,8 @@
 
 > Статус: **чернетка v0.1**. Етап 1 дорожньої карти (`docs/ROADMAP.md`).
 > Мета документа — однозначно описати, *які інстанси* бачить кожна умова й дія,
-> і *у що це компілюється* в GDScript. Код тут — ескізи; вони стануть тестами
-> й реалізацією на етапі 2 і ще не запускались.
+> і *у що це компілюється* в GDScript. `EsSol` (§4.1) і приклад (§4.3) **перевіряються тестами**
+> у `prototype/picking_spike/` (T1–T16 з §5): `run.sh` бере код прямо з цього файлу.
 
 ## 0. Простими словами
 
@@ -287,7 +287,8 @@ func _ready() -> void:
 	bind_trigger(&"Bullet", &"collided", _on_event_3)
 
 
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
+	super(delta)        # оновлює dt і time
 	var root := new_sol()
 	_event_1(root)
 	_event_4(root)

@@ -107,7 +107,11 @@ Picking: список вибраних інстансів на кожну под
 ### Етап 0 — Фундамент
 - База: `master` (4.8-beta); перейти на `4.8-stable`, щойно вийде, далі — тільки стабільні гілки.
 - Remote `upstream` на godotengine/godot, регулярні мерджі.
-- Збірка редактора локально (`scons platform=linuxbsd target=editor`).
+- ✅ Збірка редактора локально (Linux, ~33 хв на 4 ядрах):
+  `pip install scons zstandard`, потім
+  `scons platform=linuxbsd target=editor tests=yes scu_build=yes wayland=no accesskit=no -j4`.
+  Тести Godot: 1438/1439; єдиний провал (`[IP] resolve_hostname`) — бо в середовищі немає IPv6.
+- ✅ Дизайн picking перевірено в справжньому Godot: `prototype/picking_spike/` (28/28).
 - CI: залишити лише Linux/Windows/macOS-збірки редактора, решту воркфлоу вимкнути.
 - Ребрендинг: назва, `version.py`, іконка, сплеш (копірайт і ліцензію Godot зберегти).
 - **Готово, коли:** CI збирає перейменований редактор під 3 ОС.

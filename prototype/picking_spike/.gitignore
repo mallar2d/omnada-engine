@@ -1,0 +1,7 @@
+# Engine cache and imports
+.godot/
+*.uid
+# Extracted from docs/design/picking.md by run.sh
+es_sol.gd
+example_level.gd
+test.log
