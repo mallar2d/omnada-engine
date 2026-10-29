@@ -278,7 +278,7 @@ extends EsRunner
 
 const BULLET := preload("res://objects/bullet.tscn")
 
-var score := 0           # глобальна змінна Score
+var score := 0.0         # глобальна змінна Score (числа завжди дробові, expressions.md §2)
 var _once_6_1 := -1      # П15
 
 
@@ -388,7 +388,7 @@ func _event_6_1(parent: EsSol) -> bool:
 func _event_7(parent: EsSol) -> bool:
 	var sol := parent.copy()
 	for hud in sol.get_picked(&"HUD"):
-		hud.text = "Монети: " + str(score)
+		hud.text = "Монети: " + Es.text(score)   # "3", а не "3.0"
 	return true
 ```
 
